@@ -1,0 +1,15 @@
+service: secure-app-server
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  stage: dev
+
+functions:
+  api:
+    handler: handler.handler
+    events:
+      - http: 
+          path: "{proxy+}"
+          method: ANY
+          cors: true
